@@ -8,7 +8,9 @@ COPY package.json .
 RUN npm install
 # copy entire application files into the docker
 COPY . ./
+# creating env. variable PORT with default value 3000
+ENV PORT 3000
 # expose the port
-EXPOSE 3000
+EXPOSE ${PORT}
 # run the application inside container
-CMD ["npm","start"]
+CMD ["node","index.js"]
