@@ -4,8 +4,13 @@ FROM node:15
 WORKDIR /app
 # copy package.json file to the container - as /app is working directory it will be copied in it
 COPY package.json .
-# run npm install to install the dependencies
-RUN npm install
+# taking argument
+ARG NODE_ENV
+# installing dependencies based on NODE_ENV
+RUN if [ "$NODE_ENV" = "development" ]; \
+       then npm install; \
+       else npm install --only=production; \
+       fi
 # copy entire application files into the docker
 COPY . ./
 # creating env. variable PORT with default value 3000
