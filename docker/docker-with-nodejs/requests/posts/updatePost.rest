@@ -1,0 +1,7 @@
+PATCH http://localhost:3000/api/posts/62457dcb0d4a55d7628f3c1b
+Content-Type: application/json
+
+{
+    "title": "first post title updated",
+    "body": "first post body updated"
+}
