@@ -4,6 +4,7 @@ require("dotenv").config()
 
 const { MONGO_USER, MONGO_PASSWORD, MONGO_IP, MONGO_PORT } = require("./configs/config")
 const postRouter = require("./routes/postRoutes");
+const userRouter = require("./routes/userRoutes");
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/posts", postRouter);
+app.use("/api/users", userRouter);
 
 app.listen( PORT, () => {
     console.log("Server is listening on port", PORT)
