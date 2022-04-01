@@ -9,7 +9,8 @@ services:
       - MONGO_USER=mydbuser
       - MONGO_PASSWORD=mypass
     depends_on:
-      - mongo  
+      - mongo
+      - redis  
   mongo:
     image: mongo
     environment:
@@ -17,6 +18,9 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=mypass
     volumes:
       - mongo-db:/data/db
+
+  redis:
+    image: redis:latest
 
 volumes:
   mongo-db:
