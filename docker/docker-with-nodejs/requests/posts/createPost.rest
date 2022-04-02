@@ -2,6 +2,6 @@ POST http://localhost:3000/api/posts
 Content-Type: application/json
 
 {
-    "title": "this is the first post",
-    "body": "body of the first post"
+    "title": "this is the second post",
+    "body": "body of the second post"
 }
