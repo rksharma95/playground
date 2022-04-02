@@ -42,10 +42,12 @@ app.use(session({
     }
 }))
 
+app.enable("trust proy")
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
     res.send("<h2>Hello World</h2>")
+    console.log("got a request")
 });
 
 app.use("/api/posts", postRouter);
