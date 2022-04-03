@@ -7,7 +7,7 @@ on:
   push:
     branches: [ master ]
     paths:
-      - /docker/docker-with-nodejs/
+      - /docker/docker-with-nodejs/**
   pull_request:
     branches: [ master ]
 
