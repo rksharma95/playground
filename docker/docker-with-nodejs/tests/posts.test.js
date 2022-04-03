@@ -4,8 +4,6 @@ const post = { title: "test post title", body: "test post body" };
 
 describe('Posts Model Test', () => {
 
-    // It's just so easy to connect to the MongoDB Memory Server 
-    // By using mongoose.connect
     beforeAll(async () => {
         await mongoose.connect(global.__MONGO_URI__, { useNewUrlParser: true }, (err) => {
             if (err) {
@@ -36,7 +34,7 @@ describe('Posts Model Test', () => {
         expect(savedPostWithInvalidField.author).toBeUndefined();
     });
 
-    // It should us told us the errors in on gender field.
+    // It should us told us the errors in on body field.
     it('create post without required field should failed', async () => {
         const postWithoutRequiredField = new postModel({ title: "title" });
         let err;
