@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --verbose --runInBand --detectOpenHandles"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +20,8 @@
     "redis": "^4.0.6"
   },
   "devDependencies": {
+    "@shelf/jest-mongodb": "^2.2.1",
+    "jest": "^27.5.1",
     "nodemon": "^2.0.15"
   }
 }
