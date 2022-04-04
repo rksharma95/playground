@@ -36,6 +36,7 @@ jobs:
     - run: npm test
 
   docker_build_and_push:
+    needs: build_and_test
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -60,4 +61,4 @@ jobs:
         context: ./docker/docker-with-nodejs/
         file: ./docker/docker-with-nodejs/Dockerfile.prod
         push: true
-        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/simplewhale:latest
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/node-blog-app:latest
