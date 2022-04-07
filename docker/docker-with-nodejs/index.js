@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors")
 require("dotenv").config()
 
 const { MONGO_USER, MONGO_PASSWORD, MONGO_IP, MONGO_PORT, REDIS_URL, REDIS_PORT, SESSION_SECRET } = require("./configs/config")
@@ -29,6 +30,8 @@ mongoose.connect(MONGO_URI, {
     .catch((e) => console.log(e))
 
 const PORT = process.env.PORT || 3000
+
+app.use(cors())
 
 app.use(session({
     store: new RedisStore({client: redisClient}),
