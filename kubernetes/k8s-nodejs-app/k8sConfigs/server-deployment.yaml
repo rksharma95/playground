@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: server
+  template:
+    metadata:
+      labels:
+        component: server
+    spec:
+      containers:
+        - name: server
+          image: rksharma95/node-blog-app
+          ports:
+            - containerPort: 3000
+          env:
+            - name: SESSION_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: sessionsecret
+                  key: SESSION_SECRET
+            - name: REDIS_URL
+              value: redis-cluster-ip-service
+            - name: MONGO_IP
+              value: mongo-cluster-ip-service
+            - name: MONGO_USER
+              value: mydbuser
+            - name: MONGO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongodbpassword
+                  key: MONGO_PASSWORD
